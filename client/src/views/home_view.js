@@ -1,37 +1,39 @@
 const PubSub = require('../helpers/pub_sub.js');
 const FormView = require('./form_view.js');
+const LessonView = require('./lesson_view.js');
 
 
-const HomeView = function(container) {
+const HomeView = function(container, contentTarget) {
   this.container = container;
+  this.contentTarget = contentTarget;
 };
 
 
 HomeView.prototype.bindEvents = function() {
-  this.render(this.container);
+  this.renderCreateButton(this.container);
+  this.renderViewButton(this.container);
 };
 
 
-HomeView.prototype.render = function(container) {
+HomeView.prototype.renderCreateButton = function(container) {
   const createButton = document.createElement('button');
-  const viewButton = document.createElement('button');
   createButton.textContent = "Create"
-  viewButton.textContent = "View"
   container.appendChild(createButton);
-  container.appendChild(viewButton);
   createButton.addEventListener('click', (event) => {
-    console.log('click sent', event);
-    formView = new FormView(this.container);
+    const formView = new FormView(this.container);
     formView.bindEvents();
   })
 };
 
-
-module.exports = HomeView;
-
-
-
-
+HomeView.prototype.renderViewButton = function(container) {
+  const viewButton = document.createElement('button');
+  viewButton.textContent = "View"
+  container.appendChild(viewButton);
+  viewButton.addEventListener('click', (event) => {
+    const lessonView = new LessonView(this.contentTarget);
+    lessonView.bindEvents();
+  })
+};
 
 
 
