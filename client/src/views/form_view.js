@@ -1,76 +1,216 @@
-const PubSub = require('../helpers/pub_sub.js');
+ PubSub = require('../helpers/pub_sub.js');
 
-const FormView = function(container) {
-  this.container = container;
-};
+ FormView = function(container) {
+   this.container = container;
+ };
 
-FormView.prototype.bindEvents = function() {
-  this.createForm();
-};
+ FormView.prototype.bindEvents = function() {
+   this.createForm();
+ };
+
+ FormView.prototype.createForm = function() {
+   form = document.createElement('FORM');
+
+   this.container.appendChild(form);
+   heading = document.createElement('h2'); // Heading of Form
+   heading.innerHTML = "Your Topic Form ";
+   form.appendChild(heading);
+
+   var line = document.createElement('hr'); // Giving Horizontal Row After Heading
+   form.appendChild(line);
+
+   var linebreak = document.createElement('br');
+   form.appendChild(linebreak);
+
+   var topiclabel = document.createElement('label'); // Create Label for Name Field
+   topiclabel.innerHTML = "Topic : "; // Set Field Labels
+   form.appendChild(topiclabel);
+
+   var inputelement = document.createElement('input'); // Create Input Field for Name
+   inputelement.setAttribute("type", "text");
+   inputelement.setAttribute("id", "topic");
+   form.appendChild(inputelement);
+
+   var linebreak = document.createElement('br');
+   form.appendChild(linebreak);
+
+   var infolabel = document.createElement('label'); // Create Label for E-mail Field
+   infolabel.innerHTML = "Info : ";
+   form.appendChild(infolabel);
+
+   var infoelement = document.createElement('textarea'); // Create Input Field for E-mail
+   infoelement.setAttribute("type", "text");
+   infoelement.setAttribute("id", "info");
+   form.appendChild(infoelement);
+
+   var infobreak = document.createElement('br');
+   form.appendChild(infobreak);
+
+   var questionlabel = document.createElement('label'); // Append Textarea
+   questionlabel.innerHTML = "Question : ";
+   form.appendChild(questionlabel);
+
+   var texareaelement = document.createElement('textarea');
+   // texareaelement.setAttribute("name", "dmessage");
+   form.appendChild(texareaelement);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+
+   var questionlabel = document.createElement('label'); // Append Textarea
+   questionlabel.innerHTML = "Correct Answer : ";
+   form.appendChild(questionlabel);
+
+   var texareaelement = document.createElement('textarea');
+   // texareaelement.setAttribute("name", "dmessage");
+   form.appendChild(texareaelement);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+
+   var messagelabel = document.createElement('label'); // Append Textarea
+   messagelabel.innerHTML = "Incorrect Answer : ";
+   form.appendChild(messagelabel);
+
+   var texareaelement = document.createElement('textarea');
+   // texareaelement.setAttribute("name", "dmessage");
+   form.appendChild(texareaelement);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+   var infolabel = document.createElement('label'); // Create Label for E-mail Field
+   infolabel.innerHTML = "Info : ";
+   form.appendChild(infolabel);
+
+   var infoelement = document.createElement('textarea'); // Create Input Field for E-mail
+   infoelement.setAttribute("type", "text");
+   infoelement.setAttribute("id", "info");
+   form.appendChild(infoelement);
+
+   var infobreak = document.createElement('br');
+   form.appendChild(infobreak);
+
+   var questionlabel = document.createElement('label'); // Append Textarea
+   questionlabel.innerHTML = "Question : ";
+   form.appendChild(questionlabel);
+
+   var texareaelement = document.createElement('textarea');
+   // texareaelement.setAttribute("name", "dmessage");
+   form.appendChild(texareaelement);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+
+   var questionlabel = document.createElement('label'); // Append Textarea
+   questionlabel.innerHTML = "Correct Answer : ";
+   form.appendChild(questionlabel);
+
+   var texareaelement = document.createElement('textarea');
+   // texareaelement.setAttribute("name", "dmessage");
+   form.appendChild(texareaelement);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+
+   var messagelabel = document.createElement('label'); // Append Textarea
+   messagelabel.innerHTML = "Incorrect Answer : ";
+   form.appendChild(messagelabel);
+
+   var texareaelement = document.createElement('textarea');
+   // texareaelement.setAttribute("name", "dmessage");
+   form.appendChild(texareaelement);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+   var infolabel = document.createElement('label'); // Create Label for E-mail Field
+   infolabel.innerHTML = "Info : ";
+   form.appendChild(infolabel);
+
+   var infoelement = document.createElement('textarea'); // Create Input Field for E-mail
+   infoelement.setAttribute("type", "text");
+   infoelement.setAttribute("id", "info");
+   form.appendChild(infoelement);
+
+   var infobreak = document.createElement('br');
+   form.appendChild(infobreak);
+
+   var questionlabel = document.createElement('label'); // Append Textarea
+   questionlabel.innerHTML = "Question : ";
+   form.appendChild(questionlabel);
+
+   var texareaelement = document.createElement('textarea');
+   // texareaelement.setAttribute("name", "dmessage");
+   form.appendChild(texareaelement);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+
+   var questionlabel = document.createElement('label'); // Append Textarea
+   questionlabel.innerHTML = "Correct Answer : ";
+   form.appendChild(questionlabel);
+
+   var texareaelement = document.createElement('textarea');
+   // texareaelement.setAttribute("name", "dmessage");
+   form.appendChild(texareaelement);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+
+   var messagelabel = document.createElement('label'); // Append Textarea
+   messagelabel.innerHTML = "Incorrect Answer : ";
+   form.appendChild(messagelabel);
+
+   var texareaelement = document.createElement('textarea');
+   // texareaelement.setAttribute("name", "dmessage");
+   form.appendChild(texareaelement);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+
+   var messagebreak = document.createElement('br');
+   form.appendChild(messagebreak);
+
+   var submitelement = document.createElement('input');
+   submitelement.setAttribute("type", "submit");
+   submitelement.setAttribute("value", "submit");
+   form.appendChild(submitelement);
+
+   form.addEventListener('submit', (event) => {
+     event.preventDefault()
+     console.log("submit sent", event);
+   })
+
+
+ };
 
 
 
-FormView.prototype.createForm = function() {
-  const form = document.createElement('FORM');
-  this.container.appendChild(form);
-  const heading = document.createElement('h2'); // Heading of Form
-  heading.innerHTML = "Contact Form ";
-  form.appendChild(heading);
-
-  var line = document.createElement('hr'); // Giving Horizontal Row After Heading
-  form.appendChild(line);
-
-  var linebreak = document.createElement('br');
-  form.appendChild(linebreak);
-
-  var namelabel = document.createElement('label'); // Create Label for Name Field
-  namelabel.innerHTML = "Your Name : "; // Set Field Labels
-  form.appendChild(namelabel);
-
-  var inputelement = document.createElement('input'); // Create Input Field for Name
-  inputelement.setAttribute("type", "text");
-  inputelement.setAttribute("name", "dname");
-  form.appendChild(inputelement);
-
-  var linebreak = document.createElement('br');
-  form.appendChild(linebreak);
-
-  var emaillabel = document.createElement('label'); // Create Label for E-mail Field
-  emaillabel.innerHTML = "Your Email : ";
-  form.appendChild(emaillabel);
-
-  var emailelement = document.createElement('input'); // Create Input Field for E-mail
-  emailelement.setAttribute("type", "text");
-  emailelement.setAttribute("name", "demail");
-  form.appendChild(emailelement);
-
-  var emailbreak = document.createElement('br');
-  form.appendChild(emailbreak);
-
-  var messagelabel = document.createElement('label'); // Append Textarea
-  messagelabel.innerHTML = "Your Message : ";
-  form.appendChild(messagelabel);
-
-  var texareaelement = document.createElement('textarea');
-  texareaelement.setAttribute("name", "dmessage");
-  form.appendChild(texareaelement);
-
-  var messagebreak = document.createElement('br');
-  form.appendChild(messagebreak);
-
-  var submitelement = document.createElement('input'); // Append Submit Button
-  submitelement.setAttribute("type", "submit");
-  submitelement.setAttribute("name", "dsubmit");
-  submitelement.setAttribute("value", "Submit");
-  form.appendChild(submitelement);
-  // const titleLabel = document.createElement('label');
-  // titleLabel.innerHtml = "topic title:";
-  //
-  // form.appendChild(titleLabel);
-};
 
 
 
 
-
-module.exports = FormView;
+ module.exports = FormView;

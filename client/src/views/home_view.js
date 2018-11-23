@@ -23,8 +23,6 @@ HomeView.prototype.render = function(container) {
     console.log('click sent', event);
     formView = new FormView(this.container);
     formView.bindEvents();
-    //PubSub.publish('home:createButtonClicked', event);
-
   })
 };
 
