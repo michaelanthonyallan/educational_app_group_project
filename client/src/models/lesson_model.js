@@ -1,7 +1,5 @@
 const PubSub = require('../helpers/pub_sub.js');
 const RequestHelper = require('../helpers/request_helper.js');
-// const FormView = require('./views/form_view.js');
-// const ListView = require('./views/list_view.js');
 
 const LessonModel = function(url){
   this.url = url;
@@ -19,6 +17,7 @@ LessonModel.prototype.getData = function () {
   })
   .catch(console.error);
 };
+
 
 
 module.exports = LessonModel

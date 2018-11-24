@@ -1,22 +1,32 @@
 const PubSub = require('../helpers/pub_sub.js');
-//const FormView = require('./form_view.js');
 
-const LessonView = function(target){
+const LessonView = function(target) {
   this.target = target;
 }
 
-PubSub.subscribe('LessonsModel:data-loaded', (lessons) => {
-     l = lessons.detail
-});
-
-
-LessonView.prototype.bindEvents = function () {
-   this.showData(l[0])
+LessonView.prototype.bindEvents = function(selectedTopic, lessons) {
+  this.matchData(selectedTopic, lessons)
 };
 
-LessonView.prototype.showData = function (lessons) {
-     const title = this.createElement('h2', lessons.Topic);
-     this.target.appendChild(title);
+LessonView.prototype.matchData = function(selectedTopic, lessons) {
+
+  const targetName = selectedTopic.target.value;
+
+    let found = lessons.find(function(lesson) {
+      return lesson.topic === targetName;
+    });
+
+    this.showData(found);
+};
+
+LessonView.prototype.showData = function(found) {
+console.log(found.content.questions.question1.info);
+
+    const title = this.createElement('h2', found.topic);
+    this.target.appendChild(title);
+
+    const info = this.createElement('h2', found.content.questions.question1.info);
+    this.target.appendChild(info);
 };
 
 LessonView.prototype.createElement = function(elementType, text) {
