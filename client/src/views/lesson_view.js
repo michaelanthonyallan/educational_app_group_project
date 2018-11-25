@@ -18,21 +18,42 @@ LessonView.prototype.matchData = function(selectedTopic, lessons) {
     return lesson.topic === contentTargetName;
   });
 
-  this.showData(found);
+  this.showFirstInfo(found);
 };
 
-LessonView.prototype.showData = function(found) {
+LessonView.prototype.showFirstInfo = function(found) {
 
-   this.clearBox(this.contentTarget.id);
-   this.clearBox(this.container.id);
-
+  this.clearBox(this.contentTarget.id);
+  this.clearBox(this.container.id);
   const topic = this.createElement('h2', found.topic);
   this.contentTarget.appendChild(topic);
-
+console.log("ShowFirstInfo");
   const info = this.createElement('h2', found.content.questions.question1.info);
   this.contentTarget.appendChild(info);
+  this.renderQ2Info(this.contentTarget, found)
+};
 
-  this.renderButton(this.contentTarget, found)
+
+LessonView.prototype.renderQ2Info = function (target, found) {
+  const createButton = document.createElement('button');
+  createButton.textContent = "Show Part Two"
+  target.appendChild(createButton);
+  createButton.addEventListener('click', (event) => {
+    const info = this.createElement('h2', found.content.questions.question2.info);
+    this.contentTarget.appendChild(info);
+    this.renderQ3Info(this.contentTarget, found)
+  });
+};
+
+LessonView.prototype.renderQ3Info = function (target, found) {
+  const createButton = document.createElement('button');
+  createButton.textContent = "Show Part Three"
+  target.appendChild(createButton);
+  createButton.addEventListener('click', (event) => {
+    const info = this.createElement('h2', found.content.questions.question3.info);
+    this.contentTarget.appendChild(info);
+    this.renderToQuizButton(this.contentTarget, found)
+  });
 };
 
 LessonView.prototype.createElement = function(elementType, text) {
@@ -45,13 +66,14 @@ LessonView.prototype.createElement = function(elementType, text) {
 };
 
 LessonView.prototype.clearBox = function(elementId) {
-    let div = document.getElementById(elementId);
-    while (div.firstChild) {
-      div.removeChild(div.firstChild);
-    };
+  let div = document.getElementById(elementId);
+  while (div.firstChild) {
+    div.removeChild(div.firstChild);
+  };
 };
 
-LessonView.prototype.renderButton = function (target, found) {
+
+LessonView.prototype.renderToQuizButton = function (target, found) {
   const createButton = document.createElement('button');
   createButton.textContent = "Go To Quiz"
   target.appendChild(createButton);
@@ -62,12 +84,5 @@ LessonView.prototype.renderButton = function (target, found) {
     quizView.bindEvents(found);
   })
 };
-
-
-
-
-
-
-
 
 module.exports = LessonView;
