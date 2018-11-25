@@ -30,6 +30,6 @@ LessonModel.prototype.getData = function () {
     PubSub.publish('LessonsModel:data-loaded', lessons);
   })
   .catch(console.error);
-};
+};    
 
 module.exports = LessonModel
