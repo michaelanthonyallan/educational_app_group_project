@@ -5,9 +5,10 @@ const LessonModel = require('../models/lesson_model.js');
 
 let view = null;
 
-const HomeView = function(container, contentTarget) {
+const HomeView = function(container, contentTarget, topOfThePageDiv) {
   this.container = container;
   this.contentTarget = contentTarget;
+  this.topOfThePageDiv = topOfThePageDiv;
 };
 
 HomeView.prototype.bindEvents = function() {
@@ -26,6 +27,8 @@ HomeView.prototype.renderCreateButton = function(container) {
   createButton.textContent = "Create"
   container.appendChild(createButton);
   createButton.addEventListener('click', (event) => {
+    this.clearBox(this.container.id)
+    this.clearBox(this.contentTarget.id)
     const formView = new FormView(this.container);
     formView.bindEvents();
   })
@@ -48,10 +51,17 @@ HomeView.prototype.renderViewButton = function(container, selectElement) {
     };
 
     view.addEventListener('change', (event) => {
-      const lessonView = new LessonView(this.contentTarget);
+      const lessonView = new LessonView(this.contentTarget, this.container);
       lessonView.bindEvents(event, l);  // takes in the event + full dataset
     })
   });
+};
+
+HomeView.prototype.clearBox = function(elementId) {
+    let div = document.getElementById(elementId);
+    while (div.firstChild) {
+      div.removeChild(div.firstChild);
+    };
 };
 
 

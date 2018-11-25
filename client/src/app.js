@@ -5,12 +5,13 @@ const HomeView = require('./views/home_view.js');
 const LessonView = require('./views/lesson_view.js');
 
 document.addEventListener('DOMContentLoaded', () => {
-  
+
 console.log("Hello");
 
+const topOfThePageDiv = document.querySelector('#top-of-the-page');
 const homeButtonDiv = document.querySelector('#home-buttons');
 const contentTargetDiv = document.querySelector('#content');
-const homeView = new HomeView(homeButtonDiv, contentTargetDiv);
+const homeView = new HomeView(homeButtonDiv, contentTargetDiv, topOfThePageDiv);
 homeView.bindEvents();
 
 

@@ -4,14 +4,24 @@
    this.container = container;
  };
 
+
  FormView.prototype.bindEvents = function() {
    this.createForm();
  };
+
+ FormView.prototype.clearBox = function(elementId) {
+     const div = document.getElementById(elementId);
+     while (div.firstChild) {
+       div.removeChild(div.firstChild);
+     };
+};
 
  FormView.prototype.createForm = function() {
    form = document.createElement('FORM');
 
    this.container.appendChild(form);
+
+
    heading = document.createElement('h2'); // Heading of Form
    heading.innerHTML = "Your Topic Form ";
    form.appendChild(heading);
@@ -201,7 +211,7 @@
 
    form.addEventListener('submit', (event) => {
      event.preventDefault()
-     console.log("submit sent", event);
+
    })
 
 
@@ -211,6 +221,4 @@
 
 
 
-
-
- module.exports = FormView;
+     module.exports = FormView;
