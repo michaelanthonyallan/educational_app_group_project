@@ -19,7 +19,10 @@ QuizView.prototype.showData = function(found) {
   const question1 = this.createElement('h2', found.content.questions.question1.text);
   this.contentTarget.appendChild(question1);
 
- this.renderButton(this.contentTarget, found)
+  const answer1 = this.renderButton(this.contentTarget, found);
+  const answer2 = this.renderButton(this.contentTarget, found);
+
+ this.renderButton(this.contentTarget, found);
 };
 
 QuizView.prototype.createElement = function(elementType, text) {
