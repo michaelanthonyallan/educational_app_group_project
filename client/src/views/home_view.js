@@ -12,11 +12,11 @@ const HomeView = function(container, contentTarget, topOfThePageDiv) {
 };
 
 HomeView.prototype.bindEvents = function() {
-  this.renderCreateButton(this.container);
+  this.renderCreateButton(this.topOfThePageDiv);
 };
 
 HomeView.prototype.bindEvents2 = function(selectElement) {
-  this.renderViewButton(this.container, selectElement);
+  this.renderViewButton(this.topOfThePageDiv, selectElement);
 };
 
 HomeView.prototype.renderCreateButton = function(container) {
