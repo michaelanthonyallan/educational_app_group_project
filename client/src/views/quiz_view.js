@@ -7,22 +7,49 @@ QuizView = function(container, contentTarget) {
 
 
 QuizView.prototype.bindEvents = function(found) {
-  this.createQuiz(found);
+this.q1(found);
 };
 
-QuizView.prototype.createQuiz = function(found) {
-  this.showData(found);
+QuizView.prototype.q1 = function(found){
+  const topic = this.createElement('h2', found.topic);
+  this.contentTarget.appendChild(topic);
+  const q1 = this.createElement('h1', found.content.questions.question1.text);
+  this.contentTarget.appendChild(q1);
+  this.q1CorrectAnswer(this.contentTarget, found);
+  this.q1IncorrectAnswer(this.contentTarget, found);
 };
 
-QuizView.prototype.showData = function(found) {
+QuizView.prototype.q1CorrectAnswer = function(target, found){
+  const createButton = document.createElement('button');
+  createButton.textContent = `${found.content.questions.question1.correctAnswer}`;
+  target.appendChild(createButton);
+};
 
-  const question1 = this.createElement('h2', found.content.questions.question1.text);
-  this.contentTarget.appendChild(question1);
+QuizView.prototype.q1IncorrectAnswer = function(target, found){
+  const createButton = document.createElement('button');
+  createButton.textContent = `${found.content.questions.question1.incorrectAnswer}`;
+  target.appendChild(createButton);
+};
 
-  const answer1 = this.renderFirstAnswerButton(this.contentTarget, found);
-  const answer2 = this.renderSecondAnswerButton(this.contentTarget, found);
+QuizView.prototype.q2 = function(found){
+  const topic = this.createElement('h2', found.topic);
+  this.contentTarget.appendChild(topic);
+  const q2 = this.createElement('h1', found.content.questions.question2.text);
+  this.contentTarget.appendChild(q2);
+  this.q1CorrectAnswer(this.contentTarget, found);
+  this.q1IncorrectAnswer(this.contentTarget, found);
+};
 
- this.renderNextButton(this.contentTarget, found);
+QuizView.prototype.q2CorrectAnswer = function(target, found){
+  const createButton = document.createElement('button');
+  createButton.textContent = `${found.content.questions.question2.correctAnswer}`;
+  target.appendChild(createButton);
+};
+
+QuizView.prototype.q2IncorrectAnswer = function(target, found){
+  const createButton = document.createElement('button');
+  createButton.textContent = `${found.content.questions.question2.incorrectAnswer}`;
+  target.appendChild(createButton);
 };
 
 QuizView.prototype.createElement = function(elementType, text) {
@@ -34,37 +61,6 @@ QuizView.prototype.createElement = function(elementType, text) {
   return element;
 };
 
-QuizView.prototype.renderFirstAnswerButton = function (target, found){
-  const createAnsButton = document.createElement('button');
-  createAnsButton.textContent = `${found.content.questions.question1.correctAnswer}`
-  target.appendChild(createAnsButton);
-  createAnsButton.addEventListener('click', (event) => {
-    this.clearBox(this.container.id)
-    this.clearBox(this.contentTarget.id)
-})
-};
-
-QuizView.prototype.renderSecondAnswerButton = function (target, found){
-  const createAns2Button = document.createElement('button');
-  createAns2Button.textContent = `${found.content.questions.question1.incorrectAnswer}`
-  target.appendChild(createAns2Button);
-  createAns2Button.addEventListener('click', (event) => {
-    this.clearBox(this.container.id)
-    this.clearBox(this.contentTarget.id)
-})
-};
-
-QuizView.prototype.renderNextButton = function (target, found) {
-  const createButton = document.createElement('button');
-  createButton.textContent = "Next Question"
-  target.appendChild(createButton);
-  createButton.addEventListener('click', (event) => {
-    this.clearBox(this.container.id)
-    this.clearBox(this.contentTarget.id)
-    // const quizView = new QuizView(this.container, this.contentTarget);
-    // quizView.bindEvents(found);
-  })
-};
 
 QuizView.prototype.clearBox = function(elementId) {
     let div = document.getElementById(elementId);
