@@ -1,25 +1,115 @@
 PubSub = require('../helpers/pub_sub.js');
+QuizModel = require('../models/quiz_model.js')
 
 QuizView = function(container, contentTarget) {
   this.container = container;
   this.contentTarget = contentTarget;
 };
 
-
 QuizView.prototype.bindEvents = function(found) {
-  this.createQuiz(found);
+  this.q1(found);
 };
 
-QuizView.prototype.createQuiz = function(found) {
-  this.showData(found);
+QuizView.prototype.q1 = function(found) {
+  const topic = this.createElement('h2', found.topic);
+  this.contentTarget.appendChild(topic);
+  const q1 = this.createElement('h1', found.content.questions.question1.text);
+  this.contentTarget.appendChild(q1);
+  this.q1CorrectAnswer(this.contentTarget, found);
+  this.q1IncorrectAnswer(this.contentTarget, found);
 };
 
-QuizView.prototype.showData = function(found) {
+QuizView.prototype.q1CorrectAnswer = function(target, found) {
+  const createButton = document.createElement('button');
+  createButton.textContent = 'question 1 correct button';
+  target.appendChild(createButton);
+  createButton.addEventListener('click', (event) => {
+    PubSub.publish('correctAnswer', found.content.questions.question1.text)
+    this.clearBox(this.contentTarget.id);
+    this.clearBox(this.container.id);
+    this.q2(target, found);
+  });
+};
 
-  const question1 = this.createElement('h2', found.content.questions.question1.text);
-  this.contentTarget.appendChild(question1);
+QuizView.prototype.q1IncorrectAnswer = function(target, found) {
+  const createButton = document.createElement('button');
+  createButton.textContent = 'question 1 incorrect button';
+  target.appendChild(createButton);
+  createButton.addEventListener('click', (event) => {
+    PubSub.publish('incorrectAnswer', found.content.questions.question1.text)
+    this.clearBox(this.contentTarget.id);
+    this.clearBox(this.container.id);
+    this.q2(target, found);
+  });
+};
 
- this.renderButton(this.contentTarget, found)
+QuizView.prototype.q2 = function(target, found) {
+  const q2 = this.createElement('h1', found.content.questions.question2.text);
+  this.contentTarget.appendChild(q2);
+  this.q2CorrectAnswer(this.contentTarget, found);
+  this.q2IncorrectAnswer(this.contentTarget, found);
+};
+
+QuizView.prototype.q2CorrectAnswer = function(target, found) {
+  const createButton = document.createElement('button');
+  createButton.textContent = "question 2 correct button";
+  target.appendChild(createButton);
+  createButton.addEventListener('click', (event) => {
+    PubSub.publish('correctAnswer', found.content.questions.question2.text)
+    this.clearBox(this.contentTarget.id);
+    this.clearBox(this.container.id);
+    this.q3(target, found);
+  });
+};
+
+QuizView.prototype.q2IncorrectAnswer = function(target, found) {
+  const createButton = document.createElement('button');
+  createButton.textContent = "question 2 incorrect button";
+  target.appendChild(createButton);
+  createButton.addEventListener('click', (event) => {
+    PubSub.publish('incorrectAnswer', found.content.questions.question2.text)
+    this.clearBox(this.contentTarget.id);
+    this.clearBox(this.container.id);
+    this.q3(target, found);
+  });
+};
+
+QuizView.prototype.q3 = function(target, found) {
+  const q2 = this.createElement('h1', found.content.questions.question3.text);
+  this.contentTarget.appendChild(q2);
+  this.q3CorrectAnswer(this.contentTarget, found);
+  this.q3IncorrectAnswer(this.contentTarget, found);
+};
+
+QuizView.prototype.q3CorrectAnswer = function(target, found) {
+  const createButton = document.createElement('button');
+  createButton.textContent = "question 3 correct button";
+  target.appendChild(createButton);
+  createButton.addEventListener('click', (event) => {
+    PubSub.publish('correctAnswer', found.content.questions.question3.text)
+    this.clearBox(this.contentTarget.id);
+    this.clearBox(this.container.id);
+    this.endOfQuiz(target, found);
+  });
+};
+
+QuizView.prototype.q3IncorrectAnswer = function(target, found) {
+  const createButton = document.createElement('button');
+  createButton.textContent = "question 3 incorrect button";
+  target.appendChild(createButton);
+  createButton.addEventListener('click', (event) => {
+    PubSub.publish('incorrectAnswer', found.content.questions.question3.text)
+    this.clearBox(this.contentTarget.id);
+    this.clearBox(this.container.id);
+    this.endOfQuiz(target, found);
+  });
+};
+
+QuizView.prototype.endOfQuiz = function(target ,found) {
+  const topic = this.createElement('h2', "Quiz Completed");
+  this.contentTarget.appendChild(topic);
+  const quiz_model = new QuizModel(found);
+  quiz_model.bindEvents(target)
 };
 
 QuizView.prototype.createElement = function(elementType, text) {
@@ -31,23 +121,12 @@ QuizView.prototype.createElement = function(elementType, text) {
   return element;
 };
 
-QuizView.prototype.renderButton = function (target, found) {
-  const createButton = document.createElement('button');
-  createButton.textContent = "Next Question"
-  target.appendChild(createButton);
-  createButton.addEventListener('click', (event) => {
-    this.clearBox(this.container.id)
-    this.clearBox(this.contentTarget.id)
-    // const quizView = new QuizView(this.container, this.contentTarget);
-    // quizView.bindEvents(found);
-  })
-};
 
 QuizView.prototype.clearBox = function(elementId) {
-    let div = document.getElementById(elementId);
-    while (div.firstChild) {
-      div.removeChild(div.firstChild);
-    };
+  let div = document.getElementById(elementId);
+  while (div.firstChild) {
+    div.removeChild(div.firstChild);
+  };
 };
 
 

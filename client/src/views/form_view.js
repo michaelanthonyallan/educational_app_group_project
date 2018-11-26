@@ -7,14 +7,14 @@ FormView.prototype.bindEvents = function() {
   this.createForm();
   this.form.addEventListener('submit', (event) => {
     this.handleSubmit(event)
-    console.log('FormView bindEvents calling with the event', event);
+    //console.log('FormView bindEvents calling with the event', event);
   })
 };
 FormView.prototype.handleSubmit = function(event) {
   event.preventDefault();
   const newLesson = this.createLesson(event);
   PubSub.publish('FormView:lesson-submitted', newLesson);
-  console.log('HandleSubmit calling with new Lesson!', newLesson);
+  //console.log('HandleSubmit calling with new Lesson!', newLesson);
   event.target.reset();
 };
 FormView.prototype.createForm = function() {

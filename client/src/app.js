@@ -5,23 +5,23 @@ const LessonView = require('./views/lesson_view.js');
 
 document.addEventListener('DOMContentLoaded', () => {
 
-console.log("Hello");
+  console.log("Hello");
 
-const topOfThePageDiv = document.querySelector('#top-of-the-page');
-const homeButtonDiv = document.querySelector('#home-buttons');
-const contentTargetDiv = document.querySelector('#content');
-const homeView = new HomeView(homeButtonDiv, contentTargetDiv, topOfThePageDiv);
-homeView.bindEvents();
-
-
-const url = 'http://localhost:3000/api/lessons';
-const lesson_model = new LessonModel(url);
-lesson_model.bindEvents();
-lesson_model.getData();
+  const topOfThePageDiv = document.querySelector('#top-of-the-page');
+  const homeButtonDiv = document.querySelector('#home-buttons');
+  const contentTargetDiv = document.querySelector('#content');
+  const homeView = new HomeView(homeButtonDiv, contentTargetDiv, topOfThePageDiv);
+  homeView.bindEvents();
 
 
-const selectElement = document.querySelector('#dropDown');
+  const url = 'http://localhost:3000/api/lessons';
+  const lesson_model = new LessonModel(url);
+  lesson_model.bindEvents();
+  lesson_model.getData();
 
-const homeView2 = new HomeView();
-homeView.bindEvents2(selectElement);
+
+  const selectElement = document.querySelector('#dropDown');
+
+  const homeView2 = new HomeView();
+  homeView.bindEvents2(selectElement);
 });
