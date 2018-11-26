@@ -1,5 +1,5 @@
-PubSub = require('../helpers/pub_sub.js');
-QuizModel = require('../models/quiz_model.js')
+const PubSub = require('../helpers/pub_sub.js');
+const QuizModel = require('../models/quiz_model.js');
 
 QuizView = function(container, contentTarget) {
   this.container = container;
@@ -105,11 +105,11 @@ QuizView.prototype.q3IncorrectAnswer = function(target, found) {
   });
 };
 
-QuizView.prototype.endOfQuiz = function(target ,found) {
-  const topic = this.createElement('h2', "Quiz Completed");
+QuizView.prototype.endOfQuiz = function(target, found) {
+  const topic = this.createElement('h2', "Quiz Completed you scored");
   this.contentTarget.appendChild(topic);
-  const quiz_model = new QuizModel(found);
-  quiz_model.bindEvents(target)
+  const quiz_model = new QuizModel(target);
+  quiz_model.bindEvents(found)
 };
 
 QuizView.prototype.createElement = function(elementType, text) {

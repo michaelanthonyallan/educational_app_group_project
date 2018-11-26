@@ -1,7 +1,7 @@
 const PubSub = require('../helpers/pub_sub.js');
 const FormView = require('./form_view.js');
 const LessonView = require('./lesson_view.js');
-const LessonModel = require('../models/lesson_model.js');
+const QuizModel = require('../models/quiz_model');
 
 let view = null;
 
@@ -27,6 +27,8 @@ HomeView.prototype.renderCreateButton = function(container) {
   createButton.textContent = "Create"
   container.appendChild(createButton);
   createButton.addEventListener('click', (event) => {
+    const resetArray = new QuizModel();
+    resetArray.wipeArray();
     this.clearBox(this.container.id)
     this.clearBox(this.contentTarget.id)
     const formView = new FormView(this.container);
@@ -51,6 +53,8 @@ HomeView.prototype.renderViewButton = function(container, selectElement) {
     };
 
     view.addEventListener('change', (event) => {
+      const resetArray = new QuizModel();
+      resetArray.wipeArray();
       const lessonView = new LessonView(this.contentTarget, this.container);
       lessonView.bindEvents(event, l); // takes in the event + full dataset
     })

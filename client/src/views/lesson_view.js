@@ -18,10 +18,12 @@ LessonView.prototype.matchData = function(selectedTopic, lessons) {
     return lesson.topic === contentTargetName;
   });
 
-  this.showFirstInfo(found);
+  this.renderQ1Info(found);
 };
 
-LessonView.prototype.showFirstInfo = function(found) {
+LessonView.prototype.renderQ1Info = function(found) {
+
+  let counter = '1'
 
   this.clearBox(this.contentTarget.id);
   this.clearBox(this.container.id);
