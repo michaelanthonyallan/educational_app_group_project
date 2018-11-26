@@ -1,6 +1,5 @@
 const LessonModel = require('./models/lesson_model.js');
 const FormView = require('./views/form_view.js');
-const SelectView = require('./views/select_view.js');
 const HomeView = require('./views/home_view.js');
 const LessonView = require('./views/lesson_view.js');
 
