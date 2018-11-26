@@ -11,24 +11,31 @@ LessonView.prototype.bindEvents = function(selectedTopic, lessons) {
 };
 
 LessonView.prototype.matchData = function(selectedTopic, lessons) {
-
   const contentTargetName = selectedTopic.target.value;
-
   let found = lessons.find(function(lesson) {
     return lesson.topic === contentTargetName;
   });
-
   this.showFirstInfo(found);
 };
 
-LessonView.prototype.showFirstInfo = function(found) {
 
+// LessonView.prototype.nextButton = function (target, found) {
+//   const createButton = document.createElement('button');
+//   createButton.textContent = "Next"
+//   createButton.addEventListener('click', (event) => {
+//     this.clearBox(this.container.id)
+//     this.clearBox(this.contentTarget.id)
+//
+//   }
+// };
+
+
+LessonView.prototype.showFirstInfo = function(found) {
   this.clearBox(this.contentTarget.id);
   this.clearBox(this.container.id);
   const topic = this.createElement('h2', found.topic);
   this.contentTarget.appendChild(topic);
-console.log("ShowFirstInfo");
-  const info = this.createElement('h2', found.content.questions.question1.info);
+  const info = this.createElement('p', found.content.questions.question1.info);
   this.contentTarget.appendChild(info);
   this.renderQ2Info(this.contentTarget, found)
 };
@@ -39,7 +46,7 @@ LessonView.prototype.renderQ2Info = function (target, found) {
   createButton.textContent = "Show Part Two"
   target.appendChild(createButton);
   createButton.addEventListener('click', (event) => {
-    const info = this.createElement('h2', found.content.questions.question2.info);
+    const info = this.createElement('p', found.content.questions.question2.info);
     this.contentTarget.appendChild(info);
     this.renderQ3Info(this.contentTarget, found)
   });
@@ -50,7 +57,7 @@ LessonView.prototype.renderQ3Info = function (target, found) {
   createButton.textContent = "Show Part Three"
   target.appendChild(createButton);
   createButton.addEventListener('click', (event) => {
-    const info = this.createElement('h2', found.content.questions.question3.info);
+    const info = this.createElement('p', found.content.questions.question3.info);
     this.contentTarget.appendChild(info);
     this.renderToQuizButton(this.contentTarget, found)
   });

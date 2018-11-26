@@ -7,6 +7,7 @@ QuizView = function(container, contentTarget) {
 
 
 QuizView.prototype.bindEvents = function(found) {
+  console.log(found);
   this.createQuiz(found);
 };
 
