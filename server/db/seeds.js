@@ -3,7 +3,7 @@ db.dropDatabase();
 
 db.lessons.insertMany([
   {
-    topic: "Queens",
+    topic: "Planets",
     content: {
       questions: [{
         question1: {
@@ -34,7 +34,7 @@ db.lessons.insertMany([
   }
  ,
  {
-   topic: "Planets",
+   topic: "Queens of England",
    content: {
      questions: [{
        question1: {
