@@ -4,6 +4,7 @@ const LessonView = require('./lesson_view.js');
 const QuizModel = require('../models/quiz_model');
 
 let view = null;
+let createButton = null;
 
 const HomeView = function(container, contentTarget, topOfThePageDiv) {
   this.container = container;
@@ -13,6 +14,7 @@ const HomeView = function(container, contentTarget, topOfThePageDiv) {
 
 HomeView.prototype.bindEvents = function() {
   this.renderCreateButton(this.topOfThePageDiv);
+  this.renderWelcomeMessage();
 };
 
 HomeView.prototype.bindEvents2 = function(selectElement) {
@@ -20,7 +22,7 @@ HomeView.prototype.bindEvents2 = function(selectElement) {
 };
 
 HomeView.prototype.renderCreateButton = function(container) {
-  const createButton = document.createElement('button');
+  createButton = document.createElement('button');
   view = document.createElement('select');
   view.id = "dropDown";
   container.appendChild(view);
@@ -29,6 +31,8 @@ HomeView.prototype.renderCreateButton = function(container) {
   createButton.class = 'animate'
   container.appendChild(createButton);
   createButton.addEventListener('click', (event) => {
+    //view.id = 'dropDownInvisible'
+    createButton.id = 'create-button-invisible'
     const resetArray = new QuizModel();
     resetArray.wipeArray();
     this.clearBox(this.container.id)
@@ -56,12 +60,21 @@ HomeView.prototype.renderViewButton = function(container, selectElement) {
     };
 
     view.addEventListener('change', (event) => {
+      view.id = 'dropDownInvisible'
+      createButton.id = 'create-button-invisible'
       const resetArray = new QuizModel();
       resetArray.wipeArray();
       const lessonView = new LessonView(this.contentTarget, this.container);
       lessonView.bindEvents(event, l); // takes in the event + full dataset
     })
   });
+};
+
+HomeView.prototype.renderWelcomeMessage = function () {
+  const welcome = document.createElement('h1');
+  welcome.id = 'welcome'
+  welcome.textContent = 'Welcome to Quiz Creator, click create to generate your own quiz. Or have a go at existing quizzes' ;
+  this.contentTarget.appendChild(welcome);
 };
 
 HomeView.prototype.clearBox = function(elementId) {

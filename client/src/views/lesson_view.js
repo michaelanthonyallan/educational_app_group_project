@@ -24,12 +24,12 @@ LessonView.prototype.matchData = function(selectedTopic, lessons) {
 
 LessonView.prototype.renderQ1Info = function(found) {
 
-  let counter = '1'
-
   this.clearBox(this.contentTarget.id);
   this.clearBox(this.container.id);
 
-  console.log("ShowFirstInfo");
+  const topic = this.createElement('h1', found.topic);
+  this.contentTarget.appendChild(topic);
+
   const info = this.createElement('p', found.content.questions[0].question1.info);
   this.contentTarget.appendChild(info);
   this.renderQ2Info(this.contentTarget, found)
@@ -43,6 +43,10 @@ LessonView.prototype.renderQ2Info = function(target, found) {
   createButton.addEventListener('click', (event) => {
     this.clearBox(this.contentTarget.id);
     this.clearBox(this.container.id);
+
+    const topic = this.createElement('h1', found.topic);
+    this.contentTarget.appendChild(topic);
+
     const info = this.createElement('p', found.content.questions[1].question2.info);
     this.contentTarget.appendChild(info);
     this.renderQ3Info(this.contentTarget, found)
@@ -57,6 +61,10 @@ LessonView.prototype.renderQ3Info = function(target, found) {
   createButton.addEventListener('click', (event) => {
     this.clearBox(this.contentTarget.id);
     this.clearBox(this.container.id);
+
+    const topic = this.createElement('h1', found.topic);
+    this.contentTarget.appendChild(topic);
+
     const info = this.createElement('p', found.content.questions[2].question3.info);
     this.contentTarget.appendChild(info);
     this.renderToQuizButton(this.contentTarget, found)

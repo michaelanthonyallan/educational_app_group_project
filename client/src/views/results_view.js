@@ -46,8 +46,12 @@ ResultsView.prototype.backHome = function(container) {
 ResultsView.prototype.resetForNextQuiz = function (homeButton, container) {
   homeButton.addEventListener('click', (event) => {
     this.clearBox(container.id);
-    // const homeView = new HomeView();
-    // homeView.bindEvents();
+    let div = document.getElementById('create-button-invisible');
+    div.id = 'create-button'
+    let div2 = document.getElementById('dropDownInvisible');
+    div2.id = 'dropDown'
+    location.reload();
+
   });
 };
 

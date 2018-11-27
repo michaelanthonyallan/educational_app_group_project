@@ -235,46 +235,70 @@ FormView.prototype.createForm = function() {
   submitelement.setAttribute("type", "submit");
   submitelement.setAttribute("value", "submit");
   this.form.appendChild(submitelement);
-  console.log('createform calling with form', this.form);
+
+  const backButton = document.createElement('p');
+  backButton.textContent = "<Back>"
+  backButton.setAttribute("type", "text");
+  backButton.setAttribute("value", "text");
+  this.form.appendChild(backButton);
+  
+  backButton.addEventListener('click', (event) => {
+    location.reload();
+  });
+
   this.form.addEventListener('submit', (event) => {
+    let div = document.getElementById('create-button-invisible');
+    div.id = 'create-button'
+    let div2 = document.getElementById('dropDownInvisible');
+    div2.id = 'dropDown'
+    this.clearBox(this.container.id)
     event.preventDefault()
-    console.log("submit sent", event);
-  document.getElementById('dropDown').innerText = null
-})
+    document.getElementById('dropDown').innerText = null
+  })
   return this.form;
+
 };
+
 FormView.prototype.createLesson = function(event) {
   const newLesson = {
     topic: event.target[0].value,
     content: {
-      questions: [
-        {
-        question1: {
-          info: event.target[1].value,
-          text: event.target[2].value,
-          correctAnswer: event.target[3].value,
-          incorrectAnswer: event.target[4].value
-         }
+      questions: [{
+          question1: {
+            info: event.target[1].value,
+            text: event.target[2].value,
+            correctAnswer: event.target[3].value,
+            incorrectAnswer: event.target[4].value
+          }
         },
         {
-        question2: {
-          info: event.target[5].value,
-          text: event.target[6].value,
-          correctAnswer: event.target[7].value,
-          incorrectAnswer: event.target[8].value
-         }
+          question2: {
+            info: event.target[5].value,
+            text: event.target[6].value,
+            correctAnswer: event.target[7].value,
+            incorrectAnswer: event.target[8].value
+          }
         },
         {
-        question3: {
-          info: event.target[9].value,
-          text: event.target[10].value,
-          correctAnswer: event.target[11].value,
-          incorrectAnswer: event.target[12].value
-         }
+          question3: {
+            info: event.target[9].value,
+            text: event.target[10].value,
+            correctAnswer: event.target[11].value,
+            incorrectAnswer: event.target[12].value
+          }
         }
       ]
     }
   };
   return newLesson;
 };
+
+FormView.prototype.clearBox = function(elementId) {
+  let div3 = document.getElementById(elementId);
+  while (div3.firstChild) {
+    div3.removeChild(div3.firstChild);
+  };
+};
+
+
 module.exports = FormView;
