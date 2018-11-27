@@ -239,7 +239,8 @@ FormView.prototype.createForm = function() {
   this.form.addEventListener('submit', (event) => {
     event.preventDefault()
     console.log("submit sent", event);
-  })
+  document.getElementById('dropDown').innerText = null
+})
   return this.form;
 };
 FormView.prototype.createLesson = function(event) {
