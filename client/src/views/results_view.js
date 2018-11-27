@@ -1,5 +1,6 @@
 const PubSub = require('../helpers/pub_sub.js');
 const QuizModel = require('../models/quiz_model.js');
+const HomeView = require('./home_view.js');
 
 const ResultsView = function(correctScore, inCorrectScore, found, questionsAsked) {
   this.correctScore = correctScore;
@@ -45,6 +46,8 @@ ResultsView.prototype.backHome = function(container) {
 ResultsView.prototype.resetForNextQuiz = function (homeButton, container) {
   homeButton.addEventListener('click', (event) => {
     this.clearBox(container.id);
+    // const homeView = new HomeView();
+    // homeView.bindEvents();
   });
 };
 
@@ -54,6 +57,7 @@ ResultsView.prototype.clearBox = function(elementId) {
     div.removeChild(div.firstChild);
   };
 };
+
 
 
 module.exports = ResultsView;
