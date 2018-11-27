@@ -39,6 +39,7 @@ HomeView.prototype.renderCreateButton = function(container) {
 HomeView.prototype.renderViewButton = function(container, selectElement) {
   target = selectElement;
   const optionBlank = document.createElement('option');
+  optionBlank.textContent = "Select A Topic"
   target.appendChild(optionBlank);
 
   PubSub.subscribe('LessonsModel:data-loaded', (lessons) => {
