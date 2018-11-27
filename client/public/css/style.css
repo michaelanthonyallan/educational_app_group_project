@@ -23,7 +23,6 @@ button{
   position: relative;
   left: 35.5%;
   min-width: 15%;
-  /* transform: translateX(-50%); */
 }
 
 
@@ -52,6 +51,7 @@ button{
   border: 0;
   border-bottom: 5px solid #a9a05b;
   max-width: 100%;
+
   outline: 0px;
   left: 0%;
   min-width: 15%;
