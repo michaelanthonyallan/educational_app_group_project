@@ -21,7 +21,7 @@ QuizView.prototype.q1 = function(found) {
 
 QuizView.prototype.q1CorrectAnswer = function(target, found) {
   const createButton = document.createElement('button');
-  createButton.textContent = 'question 1 correct button';
+  createButton.textContent = found.content.questions[0].question1.correctAnswer;
   target.appendChild(createButton);
   createButton.addEventListener('click', (event) => {
     PubSub.publish('correctAnswer', found.content.questions[0].question1.text)
@@ -33,7 +33,7 @@ QuizView.prototype.q1CorrectAnswer = function(target, found) {
 
 QuizView.prototype.q1IncorrectAnswer = function(target, found) {
   const createButton = document.createElement('button');
-  createButton.textContent = 'question 1 incorrect button';
+  createButton.textContent = found.content.questions[0].question1.incorrectAnswer;
   target.appendChild(createButton);
   createButton.addEventListener('click', (event) => {
     PubSub.publish('incorrectAnswer', found.content.questions[0].question1.text)
@@ -52,7 +52,7 @@ QuizView.prototype.q2 = function(target, found) {
 
 QuizView.prototype.q2CorrectAnswer = function(target, found) {
   const createButton = document.createElement('button');
-  createButton.textContent = "question 2 correct button";
+  createButton.textContent = found.content.questions[1].question2.correctAnswer;
   target.appendChild(createButton);
   createButton.addEventListener('click', (event) => {
     PubSub.publish('correctAnswer', found.content.questions[1].question2.text)
@@ -64,7 +64,7 @@ QuizView.prototype.q2CorrectAnswer = function(target, found) {
 
 QuizView.prototype.q2IncorrectAnswer = function(target, found) {
   const createButton = document.createElement('button');
-  createButton.textContent = "question 2 incorrect button";
+  createButton.textContent = found.content.questions[1].question2.incorrectAnswer;
   target.appendChild(createButton);
   createButton.addEventListener('click', (event) => {
     PubSub.publish('incorrectAnswer', found.content.questions[1].question2.text)
@@ -83,7 +83,7 @@ QuizView.prototype.q3 = function(target, found) {
 
 QuizView.prototype.q3CorrectAnswer = function(target, found) {
   const createButton = document.createElement('button');
-  createButton.textContent = "question 3 correct button";
+  createButton.textContent = found.content.questions[2].question3.correctAnswer;
   target.appendChild(createButton);
   createButton.addEventListener('click', (event) => {
     PubSub.publish('correctAnswer', found.content.questions[2].question3.text)
@@ -95,7 +95,7 @@ QuizView.prototype.q3CorrectAnswer = function(target, found) {
 
 QuizView.prototype.q3IncorrectAnswer = function(target, found) {
   const createButton = document.createElement('button');
-  createButton.textContent = "question 3 incorrect button";
+  createButton.textContent = found.content.questions[2].question3.incorrectAnswer;
   target.appendChild(createButton);
   createButton.addEventListener('click', (event) => {
     PubSub.publish('incorrectAnswer', found.content.questions[2].question3.text)
