@@ -18,16 +18,21 @@ button{
   border: 0;
   border-bottom: 5px solid #009ccc;
   max-width: 25%;
+  outline: 0px;
+  position: relative;
+  left: 35.5%;
+  min-width: 15%;
+  /* transform: translateX(-50%); */
 }
 
 
 #content{
+  justify-content: center;
   text-align: center;
-  margin: 150px;
   display: flex;
   flex-direction: column;
   width: 50%;
-  margin: 0 33% 0 25%;
+  margin: 150px 33% 0 25%;
 }
 
 #top-of-the-page{
@@ -38,14 +43,19 @@ button{
   margin: 0 33% 0 37%;
 }
 
+
 #create-button{
   background-color: #F2E582;
   font-size: 36px;
   color: #005F86;
   border: 0;
   border-bottom: 5px solid #a9a05b;
-  max-width: 100%
+  max-width: 100%;
+  outline: 0px;
+  left: 0%;
+  min-width: 15%;
 }
+
 
 .animate, button.animate {
   transition: all 0.1s;
