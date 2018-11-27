@@ -212,26 +212,32 @@ FormView.prototype.createLesson = function(event) {
   const newLesson = {
     topic: event.target[0].value,
     content: {
-      questions: {
+      questions: [
+        {
         question1: {
           info: event.target[1].value,
           text: event.target[2].value,
           correctAnswer: event.target[3].value,
           incorrectAnswer: event.target[4].value
+         }
         },
+        {
         question2: {
           info: event.target[5].value,
           text: event.target[6].value,
           correctAnswer: event.target[7].value,
           incorrectAnswer: event.target[8].value
+         }
         },
+        {
         question3: {
           info: event.target[9].value,
           text: event.target[10].value,
           correctAnswer: event.target[11].value,
           incorrectAnswer: event.target[12].value
+         }
         }
-      }
+      ]
     }
   };
   return newLesson;

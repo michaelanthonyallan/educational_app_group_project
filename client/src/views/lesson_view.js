@@ -19,6 +19,7 @@ LessonView.prototype.matchData = function(selectedTopic, lessons) {
   });
 
   this.renderQ1Info(found);
+  //console.log('address search',found.content.questions[2]);
 };
 
 LessonView.prototype.renderQ1Info = function(found) {
@@ -30,7 +31,7 @@ LessonView.prototype.renderQ1Info = function(found) {
   const topic = this.createElement('h2', found.topic);
   this.contentTarget.appendChild(topic);
   console.log("ShowFirstInfo");
-  const info = this.createElement('p', found.content.questions.question1.info);
+  const info = this.createElement('p', found.content.questions[0].question1.info);
   this.contentTarget.appendChild(info);
   this.renderQ2Info(this.contentTarget, found)
 };
@@ -42,7 +43,7 @@ LessonView.prototype.renderQ2Info = function(target, found) {
   createButton.addEventListener('click', (event) => {
     this.clearBox(this.contentTarget.id);
     this.clearBox(this.container.id);
-    const info = this.createElement('p', found.content.questions.question2.info);
+    const info = this.createElement('p', found.content.questions[1].question2.info);
     this.contentTarget.appendChild(info);
     this.renderQ3Info(this.contentTarget, found)
   });
@@ -55,7 +56,7 @@ LessonView.prototype.renderQ3Info = function(target, found) {
   createButton.addEventListener('click', (event) => {
     this.clearBox(this.contentTarget.id);
     this.clearBox(this.container.id);
-    const info = this.createElement('p', found.content.questions.question3.info);
+    const info = this.createElement('p', found.content.questions[2].question3.info);
     this.contentTarget.appendChild(info);
     this.renderToQuizButton(this.contentTarget, found)
   });

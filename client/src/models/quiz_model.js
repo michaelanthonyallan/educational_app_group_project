@@ -28,7 +28,6 @@ QuizModel.prototype.collectScoreData = function(found) {
   scoreCorrect = correctArray.length;
   scoreIncorrect = incorrectArray.length;
   let ammountOfQuestionsAsked = scoreCorrect + scoreIncorrect;
-  console.log('ammountOfQuestionsAsked', ammountOfQuestionsAsked);
   passToResultsView = new ResultsView(scoreCorrect, scoreIncorrect, found, ammountOfQuestionsAsked)
   passToResultsView.bindEvents(correctArray, incorrectArray, this.container);
 };
