@@ -22,7 +22,7 @@ FormView.prototype.createForm = function() {
   heading = document.createElement('h2');
   heading.innerHTML = "Your Topic Form ";
   this.form.appendChild(heading);
-  var line = document.createElement('hr');
+  var line = document.createElement('br');
   this.form.appendChild(line);
   var linebreak1 = document.createElement('br');
   this.form.appendChild(linebreak1);

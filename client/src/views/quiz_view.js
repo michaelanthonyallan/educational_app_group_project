@@ -11,8 +11,8 @@ QuizView.prototype.bindEvents = function(found) {
 };
 
 QuizView.prototype.q1 = function(found) {
-  const topic = this.createElement('h2', found.topic);
-  this.contentTarget.appendChild(topic);
+  // const topic = this.createElement('h2', found.topic);
+  // this.contentTarget.appendChild(topic);
   const q1 = this.createElement('h1', found.content.questions[0].question1.text);
   this.contentTarget.appendChild(q1);
   this.q1CorrectAnswer(this.contentTarget, found);
