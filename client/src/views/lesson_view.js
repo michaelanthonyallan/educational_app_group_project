@@ -39,6 +39,7 @@ LessonView.prototype.renderQ1Info = function(found) {
 LessonView.prototype.renderQ2Info = function(target, found) {
   const createButton = document.createElement('button');
   createButton.textContent = "Show Part Two"
+  createButton.class = 'animate';
   target.appendChild(createButton);
   createButton.addEventListener('click', (event) => {
     this.clearBox(this.contentTarget.id);
@@ -52,6 +53,7 @@ LessonView.prototype.renderQ2Info = function(target, found) {
 LessonView.prototype.renderQ3Info = function(target, found) {
   const createButton = document.createElement('button');
   createButton.textContent = "Show Part Three"
+  createButton.class = 'animate';
   target.appendChild(createButton);
   createButton.addEventListener('click', (event) => {
     this.clearBox(this.contentTarget.id);
