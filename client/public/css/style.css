@@ -1,0 +1,42 @@
+body{
+  background-image: url("https://wallpapertag.com/wallpaper/full/6/a/b/203575-chalk-board-background-1920x1080-samsung.jpg")
+}
+
+p {
+  font-family: 'Patrick Hand', cursive;
+  color: #E8F3F5;
+  font-size: 28px;
+}
+
+button{
+  font-family: 'Patrick Hand', cursive;
+  font-size: 18px;
+  border-radius: 25px;
+  margin: 10px;
+  background-color: #00C4FF;
+  color: #E8F3F5;
+}
+
+#content{
+  text-align: center;
+  margin: 150px;
+}
+
+#top-of-the-page{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 25%;
+  margin: 0 33% 0 37%;
+}
+
+#create-button{
+  background-color: #F2E582;
+  font-size: 36px;
+  color: #005F86;
+  border: 0;
+}
+
+#dropDown{
+  font-size: 28px;
+}

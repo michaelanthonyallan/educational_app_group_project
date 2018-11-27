@@ -25,6 +25,7 @@ HomeView.prototype.renderCreateButton = function(container) {
   view.id = "dropDown";
   container.appendChild(view);
   createButton.textContent = "Create"
+  createButton.id = 'create-button'
   container.appendChild(createButton);
   createButton.addEventListener('click', (event) => {
     const resetArray = new QuizModel();
