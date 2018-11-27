@@ -18,6 +18,8 @@ button{
   border: 0;
   border-bottom: 5px solid #009ccc;
   max-width: 25%;
+  outline: 0px;
+  margin-left: 260px;
 }
 
 
@@ -44,7 +46,8 @@ button{
   color: #005F86;
   border: 0;
   border-bottom: 5px solid #a9a05b;
-  max-width: 100%
+  max-width: 100%;
+  margin-left: 0;
 }
 
 .animate, button.animate {

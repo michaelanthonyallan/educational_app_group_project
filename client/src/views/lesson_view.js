@@ -28,8 +28,7 @@ LessonView.prototype.renderQ1Info = function(found) {
 
   this.clearBox(this.contentTarget.id);
   this.clearBox(this.container.id);
-  const topic = this.createElement('h2', found.topic);
-  this.contentTarget.appendChild(topic);
+
   console.log("ShowFirstInfo");
   const info = this.createElement('p', found.content.questions[0].question1.info);
   this.contentTarget.appendChild(info);
