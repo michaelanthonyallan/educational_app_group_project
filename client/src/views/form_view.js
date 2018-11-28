@@ -223,10 +223,10 @@ FormView.prototype.createForm = function() {
   incorrectAnswer3Element.required = true;
   this.form.appendChild(incorrectAnswer3Element);
 
-  const messagebreak15 = document.createElement('br');
-  this.form.appendChild(messagebreak15);
-  const messagebreak16 = document.createElement('br');
-  this.form.appendChild(messagebreak16);
+  // const messagebreak15 = document.createElement('br');
+  // this.form.appendChild(messagebreak15);
+  // const messagebreak16 = document.createElement('br');
+  // this.form.appendChild(messagebreak16);
   const messagebreak17 = document.createElement('br');
   this.form.appendChild(messagebreak17);
   const messagebreak18 = document.createElement('br');
@@ -236,12 +236,12 @@ FormView.prototype.createForm = function() {
   submitelement.setAttribute("value", "submit");
   this.form.appendChild(submitelement);
 
-  const backButton = document.createElement('p');
-  backButton.textContent = "<Back>"
+  const backButton = document.createElement('button');
+  backButton.textContent = "Back"
   backButton.setAttribute("type", "text");
   backButton.setAttribute("value", "text");
   this.form.appendChild(backButton);
-  
+
   backButton.addEventListener('click', (event) => {
     location.reload();
   });
