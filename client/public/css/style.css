@@ -2,7 +2,10 @@ body{
   background-color: black;
   background-image: url("https://wallpapertag.com/wallpaper/full/e/6/a/198993-chalkboard-wallpaper-2716x1810-for-iphone.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
+  background-origin: content-box;
   text-align: center;
+  margin-top: 35%, 35%, 35%, 35%;
 }
 
 p {
