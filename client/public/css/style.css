@@ -1,0 +1,151 @@
+body{
+  background-color: black;
+  background-image: url("https://wallpapertag.com/wallpaper/full/e/6/a/198993-chalkboard-wallpaper-2716x1810-for-iphone.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-origin: content-box;
+  text-align: center;
+  margin-top: 35%, 35%, 35%, 35%;
+}
+
+p {
+  font-family: 'Patrick Hand', cursive;
+  color: #E8F3F5;
+  font-size: 28px;
+}
+
+button{
+  font-family: 'Patrick Hand', cursive;
+  font-size: 28px;
+  border-radius: 25px;
+  margin: 10px;
+  background-color: #00C4FF;
+  color: #E8F3F5;
+  border: 0;
+  border-bottom: 5px solid #009ccc;
+  max-width: 25%;
+  outline: 0px;
+  position: relative;
+  left: 35.5%;
+  min-width: 15%;
+}
+
+
+#content{
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 150px 33% 0 25%;
+}
+
+#top-of-the-page{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 25%;
+  margin: 0 33% 0 37%;
+}
+
+
+#create-button{
+  background-color: #F2E582;
+  font-size: 36px;
+  color: #005F86;
+  border: 0;
+  border-bottom: 5px solid #a9a05b;
+  max-width: 100%;
+
+  outline: 0px;
+  left: 0%;
+  min-width: 15%;
+}
+
+#create-button-invisible{
+  background-color: #F2E582;
+  font-size: 36px;
+  color: #005F86;
+  border: 0;
+  border-bottom: 5px solid #a9a05b;
+  max-width: 100%;
+
+  outline: 0px;
+  left: 0%;
+  min-width: 15%;
+  visibility: hidden;
+}
+
+
+.animate, button.animate, input[type='submit']:active{
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+}
+
+#create-button:active, button:active, input[type='submit']:active{
+  transform: translate(0px, 5px);
+  -webkit-transform: translate(0px, 5px);
+  border-bottom: 1px solid;
+}
+
+#dropDown{
+  font-size: 28px;
+  border-radius: 50px;
+  text-align-last: center;
+  font-family: 'Noticia Text', serif;
+}
+
+#dropDownInvisible{
+  font-size: 28px;
+  border-radius: 50px;
+  text-align-last: center;
+  font-family: 'Noticia Text', serif;
+  visibility: hidden;
+}
+
+h1{
+  font-family: 'Noticia Text', serif;
+  color: #E8F3F5;
+}
+
+h2{
+  font-family: 'Noticia Text', serif;
+  color: #E8F3F5;
+}
+
+form{
+display: flex;
+flex-direction: column;
+text-align: center;
+  color: #E8F3F5;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 25px;
+  max-width: 30%;
+  position: relative;
+  left: 35.5%;
+  margin-top: 75px;
+    outline: 0px;
+}
+
+input[type="text"]{
+  font-size: 20px;
+  font-family: 'Patrick Hand', cursive;
+  border-radius: 10px;
+}
+
+#info, #question1{
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: 'Patrick Hand', cursive;
+}
+
+input[type='submit']{
+  border-radius: 25px;
+  max-width: 30%;
+  text-align: center;
+  position: relative;
+  left: 35.5%;
+  font-size: 26px;
+  outline: 0;
+  border-bottom: 5px solid lightgrey;
+}
