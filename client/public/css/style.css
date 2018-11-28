@@ -1,6 +1,11 @@
 body{
+  background-color: black;
   background-image: url("https://wallpapertag.com/wallpaper/full/e/6/a/198993-chalkboard-wallpaper-2716x1810-for-iphone.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-origin: content-box;
   text-align: center;
+  margin-top: 35%, 35%, 35%, 35%;
 }
 
 p {
@@ -57,6 +62,20 @@ button{
   min-width: 15%;
 }
 
+#create-button-invisible{
+  background-color: #F2E582;
+  font-size: 36px;
+  color: #005F86;
+  border: 0;
+  border-bottom: 5px solid #a9a05b;
+  max-width: 100%;
+
+  outline: 0px;
+  left: 0%;
+  min-width: 15%;
+  visibility: hidden;
+}
+
 
 .animate, button.animate {
   transition: all 0.1s;
@@ -74,6 +93,14 @@ button{
   border-radius: 50px;
   text-align-last: center;
   font-family: 'Noticia Text', serif;
+}
+
+#dropDownInvisible{
+  font-size: 28px;
+  border-radius: 50px;
+  text-align-last: center;
+  font-family: 'Noticia Text', serif;
+  visibility: hidden;
 }
 
 h1{
