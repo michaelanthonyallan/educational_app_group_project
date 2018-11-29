@@ -1,8 +1,9 @@
 const PubSub = require('../helpers/pub_sub.js');
 const ResultsView = require('../views/results_view.js');
 
-const QuizModel = function(container) {
+const QuizModel = function(container, numberOfLessons) {
   this.container = container;
+  this.numberOfLessons = numberOfLessons;
 };
 
 let correctArray = [];
@@ -28,7 +29,7 @@ QuizModel.prototype.collectScoreData = function(found) {
   scoreCorrect = correctArray.length;
   scoreIncorrect = incorrectArray.length;
   let ammountOfQuestionsAsked = scoreCorrect + scoreIncorrect;
-  passToResultsView = new ResultsView(scoreCorrect, scoreIncorrect, found, ammountOfQuestionsAsked)
+  passToResultsView = new ResultsView(scoreCorrect, scoreIncorrect, found, ammountOfQuestionsAsked, this.numberOfLessons)
   passToResultsView.bindEvents(correctArray, incorrectArray, this.container);
 };
 
