@@ -134,7 +134,7 @@ input[type="text"]{
   border-radius: 10px;
 }
 
-#info, #question1{
+#info, #question1, #question{
   border-radius: 10px;
   font-size: 16px;
   font-family: 'Patrick Hand', cursive;
