@@ -1,3 +1,4 @@
+
 body{
   background-color: black;
   background-image: url("https://wallpapertag.com/wallpaper/full/e/6/a/198993-chalkboard-wallpaper-2716x1810-for-iphone.jpg");
@@ -77,12 +78,12 @@ button{
 }
 
 
-.animate, button.animate {
+.animate, button.animate, input[type='submit']:active{
   transition: all 0.1s;
   -webkit-transition: all 0.1s;
 }
 
-#create-button:active, button:active {
+#create-button:active, button:active, input[type='submit']:active{
   transform: translate(0px, 5px);
   -webkit-transform: translate(0px, 5px);
   border-bottom: 1px solid;
@@ -145,4 +146,7 @@ input[type='submit']{
   text-align: center;
   position: relative;
   left: 35.5%;
+  font-size: 26px;
+  outline: 0;
+  border-bottom: 5px solid lightgrey;
 }

@@ -1,6 +1,7 @@
 const PubSub = require('../helpers/pub_sub.js');
 const FormView = require('./form_view.js');
 const LessonView = require('./lesson_view.js');
+const NoOfQuestions = require('./noOfQuestions.js');
 const QuizModel = require('../models/quiz_model');
 
 let view = null;
@@ -31,14 +32,15 @@ HomeView.prototype.renderCreateButton = function(container) {
   createButton.class = 'animate'
   container.appendChild(createButton);
   createButton.addEventListener('click', (event) => {
-    //view.id = 'dropDownInvisible'
     createButton.id = 'create-button-invisible'
+    let div = document.getElementById('dropDown');
+    div.id = 'dropDownInvisible'
     const resetArray = new QuizModel();
     resetArray.wipeArray();
     this.clearBox(this.container.id)
     this.clearBox(this.contentTarget.id)
-    const formView = new FormView(this.container);
-    formView.bindEvents();
+    const formView = new NoOfQuestions(this.container);
+    formView.questionDropDown();
   })
 };
 
@@ -70,10 +72,10 @@ HomeView.prototype.renderViewButton = function(container, selectElement) {
   });
 };
 
-HomeView.prototype.renderWelcomeMessage = function () {
+HomeView.prototype.renderWelcomeMessage = function() {
   const welcome = document.createElement('h1');
   welcome.id = 'welcome'
-  welcome.textContent = 'Welcome to Quiz Creator, click create to generate your own quiz. Or have a go at existing quizzes' ;
+  welcome.textContent = 'Welcome to Quiz Creator, click create to generate your own quiz. Or have a go at existing quizzes';
   this.contentTarget.appendChild(welcome);
 };
 

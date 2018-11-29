@@ -2,11 +2,12 @@ const PubSub = require('../helpers/pub_sub.js');
 const QuizModel = require('../models/quiz_model.js');
 const HomeView = require('./home_view.js');
 
-const ResultsView = function(correctScore, inCorrectScore, found, questionsAsked) {
+const ResultsView = function(correctScore, inCorrectScore, found, questionsAsked, numberOfLessons) {
   this.correctScore = correctScore;
   this.inCorrectScore = inCorrectScore;
   this.found = found;
   this.questionsAsked = questionsAsked;
+  this.numberOfLessons = numberOfLessons;
 }
 
 ResultsView.prototype.bindEvents = function(correctArray, incorrectArray, container) {
@@ -23,13 +24,16 @@ ResultsView.prototype.displayScore = function(correctArray, incorrectArray, cont
 
 
 ResultsView.prototype.calculateString = function() {
-  if (this.correctScore === 3) {
+
+const percentage = (Math.floor((this.correctScore / this.numberOfLessons) * 100));
+
+  if (percentage > 80) {
     return "great job"
   }
-  if (this.correctScore === 2) {
+  if (percentage > 50) {
     return "not bad"
   }
-  if (this.correctScore === 1 || this.correctScore === 0) {
+  if (percentage < 51) {
     return "better luck next time"
   }
 };
@@ -42,8 +46,7 @@ ResultsView.prototype.backHome = function(container) {
   this.resetForNextQuiz(homeButton, container);
 };
 
-
-ResultsView.prototype.resetForNextQuiz = function (homeButton, container) {
+ResultsView.prototype.resetForNextQuiz = function(homeButton, container) {
   homeButton.addEventListener('click', (event) => {
     this.clearBox(container.id);
     let div = document.getElementById('create-button-invisible');
