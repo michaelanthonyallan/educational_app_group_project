@@ -19,57 +19,55 @@ LessonView.prototype.matchData = function(selectedTopic, lessons) {
   });
 
   this.renderQ1Info(found);
-  //console.log('address search',found.content.questions[2]);
 };
 
+let counter = 0
+
 LessonView.prototype.renderQ1Info = function(found) {
+  let lessonNumber = counter + 1;
+  let lessonNumberAddOne = lessonNumber + 1;
+  let numberOfLessons = found.content.questions.length;
 
   this.clearBox(this.contentTarget.id);
   this.clearBox(this.container.id);
 
-  const topic = this.createElement('h1', found.topic);
-  this.contentTarget.appendChild(topic);
-
-  const info = this.createElement('p', found.content.questions[0].question1.info);
+  const info = this.createElement('p', found.content.questions[counter].question.info);
   this.contentTarget.appendChild(info);
-  this.renderQ2Info(this.contentTarget, found)
+  const createButton = document.createElement('button');
+
+  if (numberOfLessons !== lessonNumber) {
+    createButton.textContent = "Show Fact " + lessonNumberAddOne;
+    createButton.class = 'animate';
+    this.contentTarget.appendChild(createButton);
+    this.renderQ2Info(createButton, found, numberOfLessons)
+  }
+  if (numberOfLessons === lessonNumber) {
+    createButton.textContent = "Go To Quiz";
+    createButton.class = 'animate';
+    this.contentTarget.appendChild(createButton);
+    this.renderQ2Info(createButton, found, numberOfLessons)
+  }
 };
 
-LessonView.prototype.renderQ2Info = function(target, found) {
-  const createButton = document.createElement('button');
-  createButton.textContent = "Show Part Two"
-  createButton.class = 'animate';
-  target.appendChild(createButton);
+LessonView.prototype.renderQ2Info = function(createButton, found, numberOfLessons) {
   createButton.addEventListener('click', (event) => {
-    this.clearBox(this.contentTarget.id);
-    this.clearBox(this.container.id);
-
-    const topic = this.createElement('h1', found.topic);
-    this.contentTarget.appendChild(topic);
-
-    const info = this.createElement('p', found.content.questions[1].question2.info);
-    this.contentTarget.appendChild(info);
-    this.renderQ3Info(this.contentTarget, found)
+    counter += 1;
+    if (counter < numberOfLessons) {
+      this.renderQ1Info(found);
+    }
+    if (counter === numberOfLessons) {
+      this.renderQuiz(found);
+    }
   });
 };
 
-LessonView.prototype.renderQ3Info = function(target, found) {
-  const createButton = document.createElement('button');
-  createButton.textContent = "Show Part Three"
-  createButton.class = 'animate';
-  target.appendChild(createButton);
-  createButton.addEventListener('click', (event) => {
-    this.clearBox(this.contentTarget.id);
-    this.clearBox(this.container.id);
-
-    const topic = this.createElement('h1', found.topic);
-    this.contentTarget.appendChild(topic);
-
-    const info = this.createElement('p', found.content.questions[2].question3.info);
-    this.contentTarget.appendChild(info);
-    this.renderToQuizButton(this.contentTarget, found)
-  });
+LessonView.prototype.renderQuiz = function(found) {
+  this.clearBox(this.container.id)
+  this.clearBox(this.contentTarget.id)
+  const quizView = new QuizView(this.container, this.contentTarget);
+  quizView.bindEvents(found);
 };
+
 
 LessonView.prototype.createElement = function(elementType, text) {
   const element = document.createElement(elementType);
@@ -87,17 +85,6 @@ LessonView.prototype.clearBox = function(elementId) {
   };
 };
 
-LessonView.prototype.renderToQuizButton = function(target, found) {
-  const createButton = document.createElement('button');
-  createButton.textContent = "Go To Quiz"
-  target.appendChild(createButton);
-  createButton.addEventListener('click', (event) => {
-    this.clearBox(this.container.id)
-    this.clearBox(this.contentTarget.id)
-    const quizView = new QuizView(this.container, this.contentTarget);
-    quizView.bindEvents(found);
-  })
-};
 
 
 

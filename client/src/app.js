@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const url = 'http://localhost:3000/api/lessons';
-  // debugger;
   const lesson_model = new LessonModel(url);
   lesson_model.bindEvents();
   lesson_model.getData();
@@ -22,4 +21,5 @@ document.addEventListener('DOMContentLoaded', () => {
   const selectElement = document.querySelector('#dropDown');
 
   homeView.bindEvents2(selectElement);
+  
 });

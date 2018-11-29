@@ -116,8 +116,7 @@ FormView.prototype.createForm = function(number) {
   this.form.appendChild(submitelement);
 
   const backButton = document.createElement('button');
-
-  backButton.textContent = "Back"
+  backButton.textContent = "<Back>"
   backButton.setAttribute("type", "text");
   backButton.setAttribute("value", "text");
   this.form.appendChild(backButton);
@@ -129,8 +128,6 @@ FormView.prototype.createForm = function(number) {
   this.form.addEventListener('submit', (event) => {
     let div = document.getElementById('create-button-invisible');
     div.id = 'create-button'
-    let div2 = document.getElementById('dropDownInvisible');
-    div2.id = 'dropDown'
     this.clearBox(this.container.id)
     event.preventDefault()
     document.getElementById('dropDown').innerText = null
@@ -139,10 +136,11 @@ FormView.prototype.createForm = function(number) {
 };
 
 FormView.prototype.createLesson = function(event) {
+  let sendFormCounter = 0;
 
-  if (number2 === 3) {
+  // if (number2 === 3) {
     const newLesson = {
-      topic: event.target[0].value,
+      topic: event.target[sendFormCounter].value,
       content: {
         questions: [{
             question: {
@@ -173,186 +171,97 @@ FormView.prototype.createLesson = function(event) {
     };
     return newLesson;
   }
-  if (number2 === 4) {
-    const newLesson = {
-      topic: event.target[0].value,
-      content: {
-        questions: [{
-            question: {
-              info: event.target[1].value,
-              text: event.target[2].value,
-              correctAnswer: event.target[3].value,
-              incorrectAnswer: event.target[4].value
-            }
-          },
-          {
-            question: {
-              info: event.target[5].value,
-              text: event.target[6].value,
-              correctAnswer: event.target[7].value,
-              incorrectAnswer: event.target[8].value
-            }
-          },
-          {
-            question: {
-              info: event.target[9].value,
-              text: event.target[10].value,
-              correctAnswer: event.target[11].value,
-              incorrectAnswer: event.target[12].value
-            }
-          },
-          {
-            question: {
-              info: event.target[13].value,
-              text: event.target[14].value,
-              correctAnswer: event.target[15].value,
-              incorrectAnswer: event.target[16].value
-            }
-          }
-        ]
-      }
-    };
-    return newLesson;
-  }
-  if (number2 === 5) {
-    const newLesson = {
-      topic: event.target[0].value,
-      content: {
-        questions: [{
-            question: {
-              info: event.target[1].value,
-              text: event.target[2].value,
-              correctAnswer: event.target[3].value,
-              incorrectAnswer: event.target[4].value
-            }
-          },
-          {
-            question: {
-              info: event.target[5].value,
-              text: event.target[6].value,
-              correctAnswer: event.target[7].value,
-              incorrectAnswer: event.target[8].value
-            }
-          },
-          {
-            question: {
-              info: event.target[9].value,
-              text: event.target[10].value,
-              correctAnswer: event.target[11].value,
-              incorrectAnswer: event.target[12].value
-            }
-          },
-          {
-            question: {
-              info: event.target[13].value,
-              text: event.target[14].value,
-              correctAnswer: event.target[15].value,
-              incorrectAnswer: event.target[16].value
-            }
-          },
-          {
-            question: {
-              info: event.target[17].value,
-              text: event.target[18].value,
-              correctAnswer: event.target[19].value,
-              incorrectAnswer: event.target[20].value
-            }
-          }
-        ]
-      }
-    };
-    return newLesson;
-  }
-  if (number2 === 10) {
-    const newLesson = {
-      topic: event.target[0].value,
-      content: {
-        questions: [{
-            question: {
-              info: event.target[1].value,
-              text: event.target[2].value,
-              correctAnswer: event.target[3].value,
-              incorrectAnswer: event.target[4].value
-            }
-          },
-          {
-            question: {
-              info: event.target[5].value,
-              text: event.target[6].value,
-              correctAnswer: event.target[7].value,
-              incorrectAnswer: event.target[8].value
-            }
-          },
-          {
-            question: {
-              info: event.target[9].value,
-              text: event.target[10].value,
-              correctAnswer: event.target[11].value,
-              incorrectAnswer: event.target[12].value
-            }
-          },
-          {
-            question: {
-              info: event.target[13].value,
-              text: event.target[14].value,
-              correctAnswer: event.target[15].value,
-              incorrectAnswer: event.target[16].value
-            }
-          },
-          {
-            question: {
-              info: event.target[17].value,
-              text: event.target[18].value,
-              correctAnswer: event.target[19].value,
-              incorrectAnswer: event.target[20].value
-            }
-          },
-          {
-            question: {
-              info: event.target[21].value,
-              text: event.target[22].value,
-              correctAnswer: event.target[23].value,
-              incorrectAnswer: event.target[24].value
-            }
-          },
-          {
-            question: {
-              info: event.target[25].value,
-              text: event.target[26].value,
-              correctAnswer: event.target[27].value,
-              incorrectAnswer: event.target[28].value
-            }
-          },
-          {
-            question: {
-              info: event.target[29].value,
-              text: event.target[30].value,
-              correctAnswer: event.target[31].value,
-              incorrectAnswer: event.target[32].value
-            }
-          },
-          {
-            question: {
-              info: event.target[33].value,
-              text: event.target[34].value,
-              correctAnswer: event.target[35].value,
-              incorrectAnswer: event.target[36].value
-            }
-          },
-          {
-            question: {
-              info: event.target[37].value,
-              text: event.target[38].value,
-              correctAnswer: event.target[39].value,
-              incorrectAnswer: event.target[40].value
-            }
-          }
-        ]
-      }
-    };
-    return newLesson;
-  }
-};
+//   if (number2 === 4) {
+//     const newLesson = {
+//       topic: event.target[0].value,
+//       content: {
+//         questions: [{
+//             question: {
+//               info: event.target[1].value,
+//               text: event.target[2].value,
+//               correctAnswer: event.target[3].value,
+//               incorrectAnswer: event.target[4].value
+//             }
+//           },
+//           {
+//             question: {
+//               info: event.target[5].value,
+//               text: event.target[6].value,
+//               correctAnswer: event.target[7].value,
+//               incorrectAnswer: event.target[8].value
+//             }
+//           },
+//           {
+//             question: {
+//               info: event.target[9].value,
+//               text: event.target[10].value,
+//               correctAnswer: event.target[11].value,
+//               incorrectAnswer: event.target[12].value
+//             }
+//           },
+//           {
+//             question: {
+//               info: event.target[13].value,
+//               text: event.target[14].value,
+//               correctAnswer: event.target[15].value,
+//               incorrectAnswer: event.target[16].value
+//             }
+//           }
+//         ]
+//       }
+//     };
+//     return newLesson;
+//   }
+//   if (number2 === 5) {
+//     const newLesson = {
+//       topic: event.target[0].value,
+//       content: {
+//         questions: [{
+//             question: {
+//               info: event.target[1].value,
+//               text: event.target[2].value,
+//               correctAnswer: event.target[3].value,
+//               incorrectAnswer: event.target[4].value
+//             }
+//           },
+//           {
+//             question: {
+//               info: event.target[5].value,
+//               text: event.target[6].value,
+//               correctAnswer: event.target[7].value,
+//               incorrectAnswer: event.target[8].value
+//             }
+//           },
+//           {
+//             question: {
+//               info: event.target[9].value,
+//               text: event.target[10].value,
+//               correctAnswer: event.target[11].value,
+//               incorrectAnswer: event.target[12].value
+//             }
+//           },
+//           {
+//             question: {
+//               info: event.target[13].value,
+//               text: event.target[14].value,
+//               correctAnswer: event.target[15].value,
+//               incorrectAnswer: event.target[16].value
+//             }
+//           },
+//           {
+//             question: {
+//               info: event.target[17].value,
+//               text: event.target[18].value,
+//               correctAnswer: event.target[19].value,
+//               incorrectAnswer: event.target[20].value
+//             }
+//           }
+//         ]
+//       }
+//     };
+//     return newLesson;
+//   }
+// };
 
 FormView.prototype.clearBox = function(elementId) {
   let div3 = document.getElementById(elementId);

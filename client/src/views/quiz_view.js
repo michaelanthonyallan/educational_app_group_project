@@ -10,105 +10,65 @@ QuizView.prototype.bindEvents = function(found) {
   this.q1(found);
 };
 
+let counter = 0;
+
 QuizView.prototype.q1 = function(found) {
-  // const topic = this.createElement('h2', found.topic);
-  // this.contentTarget.appendChild(topic);
-  const q1 = this.createElement('h1', found.content.questions[0].question1.text);
-  this.contentTarget.appendChild(q1);
-  this.q1CorrectAnswer(this.contentTarget, found);
-  this.q1IncorrectAnswer(this.contentTarget, found);
-};
 
-QuizView.prototype.q1CorrectAnswer = function(target, found) {
-  const createButton = document.createElement('button');
-  createButton.textContent = found.content.questions[0].question1.correctAnswer;
-  target.appendChild(createButton);
-  createButton.addEventListener('click', (event) => {
-    PubSub.publish('correctAnswer', found.content.questions[0].question1.text)
+  let lessonNumber = counter + 1;
+  let numberOfLessons = found.content.questions.length;
+
+  if (counter === numberOfLessons) {
     this.clearBox(this.contentTarget.id);
     this.clearBox(this.container.id);
-    this.q2(target, found);
+    this.endOfQuiz(this.contentTarget, found, numberOfLessons);
+  }
+
+  if (counter !== numberOfLessons) {
+
+    const q1 = this.createElement('h1', found.content.questions[counter].question.text);
+    this.contentTarget.appendChild(q1);
+
+    const createButton1 = document.createElement('button');
+    createButton1.textContent = found.content.questions[counter].question.correctAnswer;
+    this.contentTarget.appendChild(createButton1);
+
+    const createButton2 = document.createElement('button');
+    createButton2.textContent = found.content.questions[counter].question.incorrectAnswer;
+    this.contentTarget.appendChild(createButton2);
+
+    this.q1CorrectAnswer(createButton1, found, numberOfLessons);
+    this.q1IncorrectAnswer(createButton2, found, numberOfLessons);
+  };
+};
+
+QuizView.prototype.q1CorrectAnswer = function(createButton1, found, numberOfLessons) {
+  createButton1.addEventListener('click', (event) => {
+    PubSub.publish('correctAnswer', found.content.questions[counter].question.text)
+    if (counter !== numberOfLessons) {
+      this.clearBox(this.contentTarget.id);
+      this.clearBox(this.container.id);
+      counter += 1;
+      this.q1(found);
+    }
   });
 };
 
-QuizView.prototype.q1IncorrectAnswer = function(target, found) {
-  const createButton = document.createElement('button');
-  createButton.textContent = found.content.questions[0].question1.incorrectAnswer;
-  target.appendChild(createButton);
-  createButton.addEventListener('click', (event) => {
-    PubSub.publish('incorrectAnswer', found.content.questions[0].question1.text)
-    this.clearBox(this.contentTarget.id);
-    this.clearBox(this.container.id);
-    this.q2(target, found);
+QuizView.prototype.q1IncorrectAnswer = function(createButton2, found, numberOfLessons) {
+  createButton2.addEventListener('click', (event) => {
+    PubSub.publish('incorrectAnswer', found.content.questions[counter].question.text)
+    if (counter !== numberOfLessons) {
+      this.clearBox(this.contentTarget.id);
+      this.clearBox(this.container.id);
+      counter += 1;
+      this.q1(found);
+    }
   });
 };
 
-QuizView.prototype.q2 = function(target, found) {
-  const q2 = this.createElement('h1', found.content.questions[1].question2.text);
-  this.contentTarget.appendChild(q2);
-  this.q2CorrectAnswer(this.contentTarget, found);
-  this.q2IncorrectAnswer(this.contentTarget, found);
-};
-
-QuizView.prototype.q2CorrectAnswer = function(target, found) {
-  const createButton = document.createElement('button');
-  createButton.textContent = found.content.questions[1].question2.correctAnswer;
-  target.appendChild(createButton);
-  createButton.addEventListener('click', (event) => {
-    PubSub.publish('correctAnswer', found.content.questions[1].question2.text)
-    this.clearBox(this.contentTarget.id);
-    this.clearBox(this.container.id);
-    this.q3(target, found);
-  });
-};
-
-QuizView.prototype.q2IncorrectAnswer = function(target, found) {
-  const createButton = document.createElement('button');
-  createButton.textContent = found.content.questions[1].question2.incorrectAnswer;
-  target.appendChild(createButton);
-  createButton.addEventListener('click', (event) => {
-    PubSub.publish('incorrectAnswer', found.content.questions[1].question2.text)
-    this.clearBox(this.contentTarget.id);
-    this.clearBox(this.container.id);
-    this.q3(target, found);
-  });
-};
-
-QuizView.prototype.q3 = function(target, found) {
-  const q2 = this.createElement('h1', found.content.questions[2].question3.text);
-  this.contentTarget.appendChild(q2);
-  this.q3CorrectAnswer(this.contentTarget, found);
-  this.q3IncorrectAnswer(this.contentTarget, found);
-};
-
-QuizView.prototype.q3CorrectAnswer = function(target, found) {
-  const createButton = document.createElement('button');
-  createButton.textContent = found.content.questions[2].question3.correctAnswer;
-  target.appendChild(createButton);
-  createButton.addEventListener('click', (event) => {
-    PubSub.publish('correctAnswer', found.content.questions[2].question3.text)
-    this.clearBox(this.contentTarget.id);
-    this.clearBox(this.container.id);
-    this.endOfQuiz(target, found);
-  });
-};
-
-QuizView.prototype.q3IncorrectAnswer = function(target, found) {
-  const createButton = document.createElement('button');
-  createButton.textContent = found.content.questions[2].question3.incorrectAnswer;
-  target.appendChild(createButton);
-  createButton.addEventListener('click', (event) => {
-    PubSub.publish('incorrectAnswer', found.content.questions[2].question3.text)
-    this.clearBox(this.contentTarget.id);
-    this.clearBox(this.container.id);
-    this.endOfQuiz(target, found);
-  });
-};
-
-QuizView.prototype.endOfQuiz = function(target, found) {
+QuizView.prototype.endOfQuiz = function(target, found, numberOfLessons) {
   const topic = this.createElement('h2', "Quiz Completed you scored");
   this.contentTarget.appendChild(topic);
-  const quiz_model = new QuizModel(target);
+  const quiz_model = new QuizModel(target, numberOfLessons);
   quiz_model.bindEvents(found)
 };
 
