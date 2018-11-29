@@ -116,7 +116,8 @@ FormView.prototype.createForm = function(number) {
   this.form.appendChild(submitelement);
 
   const backButton = document.createElement('button');
-  backButton.textContent = "<Back>"
+
+  backButton.textContent = "Back"
   backButton.setAttribute("type", "text");
   backButton.setAttribute("value", "text");
   this.form.appendChild(backButton);
